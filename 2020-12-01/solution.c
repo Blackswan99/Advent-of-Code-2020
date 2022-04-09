@@ -6,7 +6,7 @@
 int main(void)
 {
     int numbers[ARRAYSIZE];
-    int i = 0, sum = 0, counter = 1, allcounter = 0;
+    int i = 0, sum = 0, counter = 0;
     FILE *file;
 
     if ((file = fopen("numbers.txt", "r")))
@@ -20,21 +20,20 @@ int main(void)
         while (counter < ARRAYSIZE)
         {
             numbers[i] = '\0';
-            for (i = counter - 1; numbers[i] != '\0'; i++)
+            for (i = counter + 1; numbers[i] != '\0'; i++)
             {
-                if (i + 1 < ARRAYSIZE)
+                sum = numbers[counter] + numbers[i];
+                if (sum == 2020)
                 {
-                    sum = numbers[i] + numbers[i + 1];
-                    if (sum == 2020)
-                    {
-                        printf("num(i): %d, num(+1): %d ==> Sum: %d\n", numbers[i], numbers[i + 1], sum);
-                    }
+                    printf("Solution found: num1 = %d, num2 = %d, num1*num2 = %d",
+                           numbers[counter],
+                           numbers[i],
+                           numbers[counter] * numbers[i]);
+                    return 0;
                 }
-                allcounter++;
             }
             counter++;
         }
-        printf("allcounter: %d\n", allcounter);
     }
     return 0;
 }
