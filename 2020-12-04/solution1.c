@@ -16,7 +16,14 @@ int main(void)
             break;
         }
 
-        printf("%s", line);
+        if (line[0] != '\n')
+        {
+            printf("%s", line);
+        }
+        else
+        {
+            // empty line
+        }
     }
     return 0;
 }
